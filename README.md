@@ -14,7 +14,7 @@ To run the code use python>=3.8, to install dependecies run pip install -r requi
 ## Project Motivation<a name="motivation"></a>
 Figure Eigth has collected and provided a pre-labeled tweets and text messages from real life disasters. This project tries to utilize the data and ML pipelines to build a Supervised Learning model which can be used to categorize the type of emergency or messgae received during a disater.
 
-## File Descriptions<a name-"description"></a>
+## File Descriptions<a name="description"></a>
 1. data/process_data.py does the data preparation using DATA for ML model, it <b>load_data</b>,<b>clean_data</b> and <b>save_data</b>
 2. model/train_classifier preapares the model using the data present in the DB. it creates ML Pipeline for data preprocessing(text vectorization) and training a Supervised Learning Model.
 
