@@ -26,13 +26,12 @@ def clean_data(df):
 	for column in categories:
 		categories[column] = categories[column].str[-1]
 		# convert column from string to numeric
-		categories[column] = categories[column].apply(int)
-	
-	#drop related column
-	categories.drop(columns="related", inplace=True)
+		categories[column] = categories[column].apply(int)	
 
 	df.drop(columns='categories', inplace=True)
 	df = pd.concat((df, categories), axis=1)
+	#drop rows where related == 2
+	df = df[df['related'] != 2]
 	df.drop_duplicates(inplace=True)
 	df.drop(columns='child_alone', inplace=True)
 	return df
