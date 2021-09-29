@@ -41,7 +41,10 @@ def index():
     # extract data needed for visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
-    
+    categories = df.drop(columns=['id', 'message', 'original', 'genre'])
+    cat_freq = categories.sum()
+    cat_types = list(cat_freq.index)
+    cat_freq = cat_freq.values
     # create visuals
     graphs = [
         {
@@ -61,7 +64,25 @@ def index():
                     'title': "Genre"
                 }
             }
-        }
+        },
+	{
+           'data': [
+               Bar(
+                   x=cat_types,
+                   y=cat_freq
+               )
+           ],
+
+           'layout': {
+               'title': 'Frequency of Message Types',
+               'yaxis': {
+                   'title': "Count"
+               },
+               'xaxis': {
+                   'title': "Type"
+               }
+           }
+       }
     ]
     
     # encode plotly graphs in JSON
